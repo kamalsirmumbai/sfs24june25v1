@@ -55,6 +55,19 @@ app.get("/gs", (req, res) => {
 	});
 
 
+app.delete("/ds", (req, res) => {
+	let sql = "delete from student where rno = ?";
+	let data = [req.body.rno];
+
+	con.query(sql, data, (error, result) => {
+		if (error) 
+			res.send(error);
+		else 
+			res.send(result);
+  		});
+	});
+
+
 
 app.listen(9000, () => { console.log("ready to serve @ 9000"); });
 
